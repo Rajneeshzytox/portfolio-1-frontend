@@ -1,0 +1,84 @@
+/* BreakPointa Guide */
+/* 
+Breakpoint	Min Width (px)	
+    sm		640px	
+    md		768px	
+    lg		1024px	
+    xl		1280px	
+    2xl		1536px	
+*/
+
+/* ---------------------------------------------------------------- */
+/* MAIN GRID Layout - HOME */
+
+.MainHomePage{
+   grid-template-columns: 4fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr;
+   grid-template-areas: "section1 section4"
+                        "section2 section4"
+                        "section3 section4";
+}
+
+.section1{
+    grid-area: section1;
+}
+.section2{
+    grid-area: section2;
+}
+.section3{
+    grid-area: section3;
+}
+.section4{
+    grid-area: section4;
+}
+
+/* tab screen  */
+@media screen and (max-width:1024px) {
+    .MainHomePage{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, minmax(200px, 1fr));
+        grid-template-areas: "section1"
+                                "section2"
+                                "section3"
+                                "section4";
+     }
+
+}
+
+/* big mobile screen  */
+@media screen and (max-width:768px) {
+    .MainHomePage{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section2{
+        grid-template-areas: "row2-element-1 row2-element-3"
+                            "row2-element-2 row2-element-2";
+        
+    }
+    .row2-element-1{
+        grid-area: row2-element-1;
+    }
+    .row2-element-2{
+        grid-area: row2-element-2;
+    }
+    .row2-element-3{
+        grid-area: row2-element-3;
+    }
+
+
+
+}
+
+/* MAIN GRID LAYOUT - Home ENDS */
+/* ---------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
