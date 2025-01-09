@@ -1,6 +1,6 @@
 
 // select Option 
-import SelectOptionsComponent from "./selectOptions";
+import SelectOptionsComponent from "./SelectOptions";
 
 const RenderSelectInputs = ({
     selectLabels,
