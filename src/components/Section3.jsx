@@ -16,7 +16,7 @@ export default function Section3({Data}) {
             <div className=" skills-container flex justify-start items-center">
 
               { skills.map((skill)=>(
-                  <div className="skills inline-block min-w-20 h-20 bg-gray-400 m-2 aspect-square">
+                  <div key={skill} className="skills inline-block min-w-20 h-20 bg-gray-400 m-2 aspect-square">
                     {skill}
                   </div>
               ))}
