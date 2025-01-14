@@ -1,10 +1,12 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "http://127.0.0.1:8080/api/", // Django backend API
+    // baseURL: "http://127.0.0.1:8080/api/", // Django backend API local dev
+    baseURL: "portfoliobackend-qpni.onrender.com", // Django backend deployed
   });
 
-const API_BASE_URL = "http://127.0.0.1:8080/api/"
+const API_BASE_URL = "portfoliobackend-qpni.onrender.com"
+// const API_BASE_URL = "http://127.0.0.1:8080/api/"
 
 // get projects
 export const fetchProjects = async () => {

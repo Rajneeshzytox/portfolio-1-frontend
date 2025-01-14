@@ -1,4 +1,4 @@
-import OptionList from "./optionList"
+import OptionList from "./OptionList"
 import OptionForm from "./OptionForm"
 export default function RenderOptionList({
     title,
