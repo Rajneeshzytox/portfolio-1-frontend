@@ -1,4 +1,4 @@
-import { delProject, loadProjects } from "../Data/api";
+import { delProject } from "../Data/api";
 
 
 
@@ -155,9 +155,9 @@ const ProjectList = ({
     }
 
   return (
-    <div className="overflow-x-scroll min-w-[360px] my-8">
+    <div className="overflow-x-scroll my-8  px-4 outline max-w-full">
       
-      <table>
+      <table className="mx-auto outline border-collapse">
         <thead>
           <TableHeadingText />
         </thead>

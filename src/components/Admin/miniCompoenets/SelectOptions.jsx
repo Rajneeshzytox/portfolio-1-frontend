@@ -45,14 +45,14 @@ const OptionsContainerComponent = ({
         <>
         { 
             <div className="overflow-y-scroll max-h-32 w-max">
-                <div className="flex flex-col min-w-52">
+                <div className="flex flex-col sm:min-w-52 min-w-40">
                     {
                         filterOptions.length > 0 ?
                         // if filter tags is not empty
                         filterOptions.map((option) => (
                             <span 
                                 key={option.id} 
-                                className="min-w-52 cursor-pointer badge"
+                                className="sm:min-w-52 min-w-40 cursor-pointer badge"
                                 onClick={() => selectOption(option)}
 
                             >
@@ -63,6 +63,7 @@ const OptionsContainerComponent = ({
                             IsSeleted(inputValue) ?
                                 <p>{inputValue} is selected already</p>
                             :
+                            inputValue &&
                             <p onClick={() => createNewOption(inputValue)}>
                                 create new option <span className="badge">{inputValue}</span>
                             </p>
@@ -84,14 +85,17 @@ export default function SelectOptionsComponent({
     selectedOptions,
     setSelectedOptons,
     single,
+    createOption,
+    loadOption,
 }){
     if(!(options)){
         return(
             <p>no data options selectedOptions, setSelectedOptons</p>
         )
-    }
+    }  
 
-    single? console.log("selected Options: \n", selectedOptions): ""
+    // if true then display all options OptionContainer  
+    const [isActive, setIsActive] = useState();
 
     // search text (for filter)
     const [inputValue, setinputValue] = useState('');
@@ -137,8 +141,15 @@ export default function SelectOptionsComponent({
 
     // craete new Optiona 
     const createNewOption = async (data) =>{
-        // const response = 
-        console.log("post req", data)
+        if(data){
+            try{
+                await createOption(JSON.stringify({name:data}));
+                loadOption();
+            }catch(err){
+                console.log("Error while creating new options\n", err);
+            }
+
+        }
     }
 
 
@@ -155,16 +166,20 @@ export default function SelectOptionsComponent({
                 {/* options container */}
                 <div>
                     {/* search input */}
-                    <input type="text" value={inputValue} onChange={(e) => setinputValue(e.target.value)} placeholder="type to search options" className="text-black" id="option-s"/>
+                    <input type="text" value={inputValue} onChange={(e) => setinputValue(e.target.value)} placeholder="type to search options" id="optionsInputValue"/>
 
                     {/* options div  */}
-                    <OptionsContainerComponent 
-                        inputValue={inputValue} 
-                        filterOptions={filterOptions} 
-                        selectOption={selectOption} 
-                        IsSeleted={IsSeleted} 
-                        createNewOption={createNewOption} 
-                    />
+                    {
+                        inputValue &&
+                        <OptionsContainerComponent 
+                            inputValue={inputValue} 
+                            filterOptions={filterOptions} 
+                            selectOption={selectOption} 
+                            IsSeleted={IsSeleted} 
+                            createNewOption={createNewOption} 
+                        /> 
+                    }
+                    
                 </div>
             </div>
         </>

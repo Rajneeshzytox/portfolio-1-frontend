@@ -48,13 +48,16 @@ export default function Form({
             document.getElementById(input.text).value = ""; 
         })
 
-        // reset update state
-        updateProjects.set({
-            active:false,
-            projectUpdateID: NaN,
-            projectUpdateData: {}
-        })
-    }
+        if(isUpdate){
+            // reset update state
+            updateProjects.set({
+                active:false,
+                projectUpdateID: NaN,
+                projectUpdateData: {}
+            })
+        }
+
+        }
    
 
     // get form data and reset states 
@@ -104,16 +107,19 @@ export default function Form({
                 const res = await createProject(projectData) 
                 console.log("project created successfully!\n", res)
             }
-            await loadAllOptions.loadAllProjects();
+            await loadAllOptions.projects();
         }catch(err){
             console.log(err)
         }
         finally{
-            updateProjects.set({
-                active:false,
-                projectUpdateID: NaN,
-                projectUpdateData: {}
-            })
+            if (isUpdate){
+                updateProjects.set({
+                    active:false,
+                    projectUpdateID: NaN,
+                    projectUpdateData: {}
+                })
+
+            }
         }
 
         
@@ -135,8 +141,11 @@ export default function Form({
         {
             formLabelData?
             // Form Grid
-            <div className="grid md:grid-cols-4 m-auto md:w-[80%] md:max-w-[1000px] p-4 gap-2">
+            <div className="md:grid md:grid-cols-3 m-auto lg:w-[80%] md:max-w-[1024px] p-4 gap-2">
+
                 <RenderInput inputLabels={formLabelData.inputLabels}/>
+                <div className="flex flex-wrap gap-2 my-4 md:col-span-2">
+
                 <RenderSelectInputs
                     selectLabels={formLabelData.selectLabels}
                     statesInfo={{
@@ -153,11 +162,13 @@ export default function Form({
                             set:setSelectedStatusState
                         },
                     }}
+                    loadAllOptions={loadAllOptions}
                 />
+                </div>
                 
 
                 {/* submit button */}
-                <button className="bg-blue-700  w-max px-3 py-1 rounded-md" onClick={()=>formSubmit(formLabelData.inputLabels)}>
+                <button className="button" onClick={()=>formSubmit(formLabelData.inputLabels)}>
                     {isUpdate?"save":"add project"}
                 </button>
 

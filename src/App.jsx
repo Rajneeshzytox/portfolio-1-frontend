@@ -1,7 +1,7 @@
 // import HomePage from "./components/HomePage";
 import { useState, useEffect } from "react";
-
-
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 // temp import
 
 // import AddProject from "./components/Projects/AddProject";
@@ -20,7 +20,10 @@ import { FormLabelData } from "./services/myData";
 
 
 // ADMIN IMPORT
-import ProjectAdmin from "./components/Admin/ProjectAdmin";
+import Dashboard from "./components/Admin/Dashboard";
+
+// HomePage
+import HomePage from "./components/HomePage" 
 
 
 
@@ -51,16 +54,13 @@ function App() {
   return (
     <>
     
-      {/* <HomePage/> */}
-      {/* <AddProject data={formLabelData}/> */}
-      {/* <ProjectTable/> */}
-      {/* <TempList />
-      <TempForm/> */}
-
-      {/* temp */}
-      {/* <SelectTags /> */}
-      
-      <ProjectAdmin />
+      <Routes>
+        <Route path="/" element={<HomePage/>}></Route>
+        <Route path="/admin" element={<Dashboard/>}>
+           
+        </Route>
+        
+      </Routes>
     
     </>
 

@@ -8,8 +8,8 @@ export function PersonalInfo() {
     lname: "Kumar",
     about: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     summary:
-      "Passionate web developer with experience in front-end development using HTML, CSS, and JavaScript. Skilled in converting image designs to webpage and creating easy to use websites. Successfully added AI features to projects using Google’s Gemini APIs, such as in 'Vortex Stories' and 'Re-Write AI Tool.'Experienced in designing from my role as an Art & Design Club Moderator at Uable. Good at solving problems and always eager to learn more. Currently studying for a Bachelor of Computer Applications and working on an interactive personal portfolio.",
-    skills: ["1", "2", "3", "4", "5", "6"],
+      "Passionate web developer with experience in front-end development using HTML, CSS, and JavaScript. Skilled in converting image designs to webpage and creating easy to use websites. Good at solving problems and always eager to learn more. Currently studying for a Bachelor of Computer Applications and working on an interactive personal portfolio.",
+    skills: ["1", "2", "3", "4", "5", "6", "7"],
   };
 }
 

@@ -82,18 +82,18 @@ const ProjectAdmin = () => {
     // console.log(formLabelData.selectLabels)
     return(
         <>
-            <main>
+            <main >
                 {
                     !updateProjectData.active?(
-                        <div>
+                        <div className="w-full overflow-hidden">
                             <Form 
                                 formLabelData={projectFormData}
                                 isUpdate={updateProjectData.active}
                                 loadAllOptions={{
-                                    loadAllProjects,
-                                    loadAllTags,
-                                    loadAllCategories,
-                                    loadAllStatus,
+                                    projects: loadAllProjects,
+                                    tags: loadAllTags,
+                                    categories: loadAllCategories,
+                                    status: loadAllStatus,
                                 }}
                             />
                             <ProjectList
@@ -109,10 +109,10 @@ const ProjectAdmin = () => {
                             formLabelData={updateProjectFormData}
                             isUpdate={updateProjectData.active}
                             loadAllOptions={{
-                                loadAllProjects,
-                                loadAllTags,
-                                loadAllCategories,
-                                loadAllStatus,
+                                projects: loadAllProjects,
+                                tags: loadAllTags,
+                                categories: loadAllCategories,
+                                status: loadAllStatus,
                             }}
                             updateProjects={{
                                 state:updateProjectData,

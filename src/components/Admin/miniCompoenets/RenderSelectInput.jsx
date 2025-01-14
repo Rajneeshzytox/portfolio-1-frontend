@@ -1,13 +1,16 @@
+// option create 
+import { createTag, createCategories, createStatus } from "../Data/api";
 
 // select Option 
 import SelectOptionsComponent from "./SelectOptions";
 
 const RenderSelectInputs = ({
     selectLabels,
-    statesInfo
+    statesInfo,
+    loadAllOptions,
 }) => {
 
-    console.log("from render select:\n", statesInfo.status.state)
+    
     return(
         <>
         <div>Tags:
@@ -16,6 +19,8 @@ const RenderSelectInputs = ({
                 options={selectLabels.tags}
                 selectedOptions={statesInfo.tags.state}
                 setSelectedOptons={statesInfo.tags.set}
+                createOption={createTag}
+                loadOption={loadAllOptions.tags}
             />
         </div>
 
@@ -25,6 +30,8 @@ const RenderSelectInputs = ({
                 options={selectLabels.categories}
                 selectedOptions={statesInfo.categories.state}
                 setSelectedOptons={statesInfo.categories.set}
+                createOption={createCategories}
+                loadOption={loadAllOptions.categories}
             />
         </div>
 
@@ -35,6 +42,8 @@ const RenderSelectInputs = ({
                 selectedOptions={statesInfo.status.state}
                 setSelectedOptons={statesInfo.status.set}
                 single={true}
+                createOption={createStatus}
+                loadOption={loadAllOptions.status}
             />
         </div>
         </>

@@ -3,7 +3,8 @@ import axios from "axios";
 
 // -------------- Base url (backend) ---------------
 const API = axios.create({
-    baseURL: "https://portfoliobackend-qpni.onrender.com/api/"
+    // baseURL: "https://portfoliobackend-qpni.onrender.com/api/"
+    baseURL: "http://127.0.0.1:8080/api/"
 })
 
 // -------------- Endpoints (url.py) ---------------
@@ -80,6 +81,35 @@ export const loadTags = async () => {
     }
 }
 
+export const createTag = async (tagData) => {
+    try{
+        await API.post(urls.tags, tagData, {headers: {'Content-Type':'application/json'}});
+    }
+    catch (err){
+        console.log(err);
+    }
+}
+
+export const delTag = async (id) =>{
+    try {
+        await API.delete(`${urls.tags}${id}/`)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+// update project
+export const updateTag = async (id, tagData) => {
+    try {
+        await API.put(
+            `${urls.tags}${id}/`, 
+            tagData, 
+            {headers: {'Content-Type':'application/json'} },
+        )
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 
 
@@ -95,6 +125,35 @@ export const loadCategories = async () => {
     }
 }
 
+export const createCategories = async (categoryData) => {
+    try{
+        await API.post(urls.categories, categoryData, {headers: {'Content-Type':'application/json'}});
+        
+    }catch(err){
+        console.log("categories create failed\n", err)
+    }
+}
+
+export const delCategories = async (id) =>{
+    try {
+        await API.delete(`${urls.categories}${id}/`)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+// update project
+export const updateCategories = async (id, categoriesData) => {
+    try {
+        await API.put(
+            `${urls.categories}${id}/`, 
+            categoriesData, 
+            {headers: {'Content-Type':'application/json'} },
+        )
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 
 
@@ -110,3 +169,32 @@ export const loadStatus = async () => {
     }
 }
 
+export const createStatus = async (statusData) => {
+    try{
+        await API.post(urls.status, statusData, {headers: {'Content-Type':'application/json'}})
+
+    }catch (err){
+        console.log("status create failed\n",err);
+    }
+}
+
+export const delStatus = async (id) =>{
+    try {
+        await API.delete(`${urls.status}${id}/`)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+// update status
+export const updateStatus = async (id, statusData) => {
+    try {
+        await API.put(
+            `${urls.status}${id}/`, 
+            statusData, 
+            {headers: {'Content-Type':'application/json'} },
+        )
+    } catch (err) {
+        console.log(err)
+    }
+}
