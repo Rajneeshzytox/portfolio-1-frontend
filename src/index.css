@@ -2,15 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-/* frontend home color theme */
-:root{
-    --primary-color: 250, 100%, 68%;
-    --primary-color-light: 250, 82%, 88%;
-    --primary-color-medium: 250, 80%, 80%;
-    --accent-color: 37, 100%, 60%;
-    --primary-gradient: linear-gradient(256.97deg, #443494 10.65%, #6B23FC 47.69%, #A523FC 88.07%);
-    --primary-gradient-medium: linear-gradient(241.27deg, #B1A3F5 14.28%, #3717D7 123.97%);
-    --primary-gradient-light: linear-gradient(230deg, #EAEAEA 4.42%, #BCB1F4 66.51%, #D4A0FC 99.17%);
-    --accent-gradient: linear-gradient(218.07deg, #FFB236 39.43%, #E17020 100%);
-}
+
 

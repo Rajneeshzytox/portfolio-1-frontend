@@ -4,11 +4,12 @@ import Section3 from "./Section3.jsx";
 import Section4 from "./Section4.jsx";
 
 import "../statics/styles/Home.css";
-import "../statics/js/website.js"
-import {PersonalInfo} from "../services/myData.js"
+
+// frontend Data
+import { frontendData } from "./Admin/Data/frontendData.js";
 
 
-const Data = PersonalInfo()
+const Data = frontendData()
 
 
 export default function HomePage() {

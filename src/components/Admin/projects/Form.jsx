@@ -130,11 +130,11 @@ export default function Form({
         
         {/* ------ Form Heading ------ */
             isUpdate ?
-                <h1>
+                <h1 className="main-title">
                     Update Projects {updateProjects.state.projectUpdateData.title} 
-                    <span>{updateProjects.state.projectUpdateData.id}</span>
+                    <span className="badge">{updateProjects.state.projectUpdateData.id}</span>
                 </h1>
-            :   <h1>
+            :   <h1 className="main-title">
                     Create Project
                 </h1>
         }
@@ -175,7 +175,7 @@ export default function Form({
                 
                 {/* update cancel button */
                     isUpdate &&
-                        <button className="bg-blue-700  w-max px-3 py-1 rounded-md" onClick={()=> FormReset(formLabelData.inputLabels)}>
+                        <button className="  sec-button" onClick={()=> FormReset(formLabelData.inputLabels)}>
                             Cancel
                         </button>
                     
