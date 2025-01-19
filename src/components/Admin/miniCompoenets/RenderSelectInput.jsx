@@ -7,7 +7,7 @@ import SelectOptionsComponent from "./SelectOptions";
 const RenderSelectInputs = ({
     selectLabels,
     statesInfo,
-    loadAllOptions,
+    // loadAllOptions,
 }) => {
 
     
@@ -20,7 +20,7 @@ const RenderSelectInputs = ({
                 selectedOptions={statesInfo.tags.state}
                 setSelectedOptons={statesInfo.tags.set}
                 createOption={createTag}
-                loadOption={loadAllOptions.tags}
+                // loadOption={loadAllOptions.tags}
             />
         </div>
 
@@ -31,7 +31,7 @@ const RenderSelectInputs = ({
                 selectedOptions={statesInfo.categories.state}
                 setSelectedOptons={statesInfo.categories.set}
                 createOption={createCategories}
-                loadOption={loadAllOptions.categories}
+                // loadOption={loadAllOptions.categories}
             />
         </div>
 
@@ -43,7 +43,7 @@ const RenderSelectInputs = ({
                 setSelectedOptons={statesInfo.status.set}
                 single={true}
                 createOption={createStatus}
-                loadOption={loadAllOptions.status}
+                // loadOption={loadAllOptions.status}
             />
         </div>
         </>

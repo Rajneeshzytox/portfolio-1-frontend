@@ -3,8 +3,8 @@ import axios from "axios";
 
 // -------------- Base url (backend) ---------------
 const API = axios.create({
-    baseURL: "https://portfoliobackend-qpni.onrender.com/api/"
-    // baseURL: "http://127.0.0.1:8080/api/"
+    // baseURL: "https://portfoliobackend-qpni.onrender.com/api/"
+    baseURL: "http://127.0.0.1:8080/api/"
 })
 
 // -------------- Endpoints (url.py) ---------------
@@ -41,6 +41,7 @@ export const createProject = async (projectData) => {
         return res.data
     }
     catch (err){
+        
         console.log(err);
     }
 }
@@ -83,7 +84,8 @@ export const loadTags = async () => {
 
 export const createTag = async (tagData) => {
     try{
-        await API.post(urls.tags, tagData, {headers: {'Content-Type':'application/json'}});
+        const res = await API.post(urls.tags, tagData, {headers: {'Content-Type':'application/json'}});
+        return res.data;
     }
     catch (err){
         console.log(err);
@@ -92,7 +94,10 @@ export const createTag = async (tagData) => {
 
 export const delTag = async (id) =>{
     try {
-        await API.delete(`${urls.tags}${id}/`)
+        const res = await API.delete(`${urls.tags}${id}/`);
+        if( res.status == 204){
+            return id;
+        }
     } catch (err) {
         console.log(err)
     }
@@ -101,11 +106,12 @@ export const delTag = async (id) =>{
 // update project
 export const updateTag = async (id, tagData) => {
     try {
-        await API.put(
+        const res = await API.put(
             `${urls.tags}${id}/`, 
             tagData, 
             {headers: {'Content-Type':'application/json'} },
         )
+        return res.data;
     } catch (err) {
         console.log(err)
     }
@@ -127,8 +133,8 @@ export const loadCategories = async () => {
 
 export const createCategories = async (categoryData) => {
     try{
-        await API.post(urls.categories, categoryData, {headers: {'Content-Type':'application/json'}});
-        
+        const res = await API.post(urls.categories, categoryData, {headers: {'Content-Type':'application/json'}});
+        return res.data;
     }catch(err){
         console.log("categories create failed\n", err)
     }
@@ -136,7 +142,10 @@ export const createCategories = async (categoryData) => {
 
 export const delCategories = async (id) =>{
     try {
-        await API.delete(`${urls.categories}${id}/`)
+        const res = await API.delete(`${urls.categories}${id}/`);
+        if( res.status == 204){
+            return id;
+        }
     } catch (err) {
         console.log(err)
     }
@@ -145,11 +154,12 @@ export const delCategories = async (id) =>{
 // update project
 export const updateCategories = async (id, categoriesData) => {
     try {
-        await API.put(
+        const res = await API.put(
             `${urls.categories}${id}/`, 
             categoriesData, 
             {headers: {'Content-Type':'application/json'} },
         )
+        return res.data;
     } catch (err) {
         console.log(err)
     }
@@ -171,8 +181,8 @@ export const loadStatus = async () => {
 
 export const createStatus = async (statusData) => {
     try{
-        await API.post(urls.status, statusData, {headers: {'Content-Type':'application/json'}})
-
+        const res = await API.post(urls.status, statusData, {headers: {'Content-Type':'application/json'}})
+        return res.data;
     }catch (err){
         console.log("status create failed\n",err);
     }
@@ -180,7 +190,11 @@ export const createStatus = async (statusData) => {
 
 export const delStatus = async (id) =>{
     try {
-        await API.delete(`${urls.status}${id}/`)
+        const res = await API.delete(`${urls.status}${id}/`)
+        if( res.status == 204){
+            console.log("deleted, ", id)
+            return id;
+        }
     } catch (err) {
         console.log(err)
     }
@@ -189,11 +203,12 @@ export const delStatus = async (id) =>{
 // update status
 export const updateStatus = async (id, statusData) => {
     try {
-        await API.put(
+        const res = await API.put(
             `${urls.status}${id}/`, 
             statusData, 
             {headers: {'Content-Type':'application/json'} },
         )
+        return res.data;
     } catch (err) {
         console.log(err)
     }

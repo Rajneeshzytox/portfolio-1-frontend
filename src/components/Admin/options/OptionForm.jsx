@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react"
+import { useDispatch } from "react-redux";
 
 export default function OptionForm({
-    title, create, load, inputval, setInputVal
+    title, create, inputval, setInputVal, addToState,
 }){
     
+    // Dispatch
+    const dispatch = useDispatch();
 
     // create option function 
     const createOption = async (name) => {
@@ -11,10 +13,10 @@ export default function OptionForm({
             const obj = {name:name.toLowerCase()};
 
             try{
-                await create(JSON.stringify(obj));
-                console.log(`created ${title}: ${name}`)
-                await load()
+                const res = await create(JSON.stringify(obj));
                 setInputVal("")
+                // ADd option to stat e
+                if(res){dispatch(addToState(res))}
             }catch (err){
                 console.log(`failed to create ${title}: ${name}\n`, err)
             }

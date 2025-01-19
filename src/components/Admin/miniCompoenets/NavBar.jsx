@@ -1,8 +1,8 @@
 import { useState } from "react"
-
+import { NavLink } from "react-router-dom"
 
 // NAv ITEMS
-const NavItems = ({items, setActive, isExpand}) => {
+const NavItems = ({items, isExpand}) => {
 
     // obj =[ {id:0, text:projects, icon:}, ...]
     return (
@@ -10,9 +10,9 @@ const NavItems = ({items, setActive, isExpand}) => {
         { items.length &&
             items.map((obj) => (
 
-                <div 
-                    onClick={()=>setActive(Number(obj.id))}
-                    key={obj.id}
+                <NavLink 
+                    to={`${obj.url}`}
+                    key={`option_${obj.id}`}
                     className={`flex flex-nowrap  items-center gap-3 w-full ${!isExpand? "max-sm:hidden justify-center" : "px-6 justify-start"} transition-all  py-1 bg-gray-600 hover:bg-gray-300 hover:text-gray-900 rounded-md cursor-pointer`}
                     
                 >
@@ -30,7 +30,7 @@ const NavItems = ({items, setActive, isExpand}) => {
                         </p>
 
                     }
-                </div>
+                </NavLink>
             ))
         }
         </>
@@ -39,12 +39,13 @@ const NavItems = ({items, setActive, isExpand}) => {
 
 
 
-export default function NavBar({setActive}){
+export default function NavBar(){
     const [expand, setexpand] = useState(false)
 
     const [navItems, setNavItems] = useState([
-        {id:0, text:'Projects', icon: "🃏"},
-        {id:1, text:'Options', icon: "✨"},
+        {id:1, url: '', text:'Dashboard', icon: "D"},
+        {id:2, url: 'projects', text:'projects', icon: "🃏"},
+        {id:3, url: 'options', text:'options', icon: "✨"},
     ])
 
     // set Expand to true/false
@@ -70,7 +71,7 @@ export default function NavBar({setActive}){
 
             {/* NAv Items */}
             <div className="flex flex-col gap-2">
-                <NavItems items={navItems} setActive={setActive} isExpand={expand} />
+                <NavItems items={navItems} isExpand={expand} />
             </div>
             
         </div>

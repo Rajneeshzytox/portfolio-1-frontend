@@ -1,6 +1,10 @@
 import { delProject } from "../Data/api";
 
+// REDUX STATE SELECTOR
+import {useSelector, useDispatch} from "react-redux"
 
+// project state delete
+import { deleteProjectState } from "../../../reduxStates/slices/projectsSlice";
 
 
 
@@ -121,12 +125,39 @@ const TableRow = ({ project, handleUpdateClick, deleteProject }) => {
   );
 };
 
-const ProjectList = ({ 
-        projects,
+function ProjectList({ 
+        // projects,
         setUpdate,
-        loadAllProjects,
+        // loadAllProjects,
 
-    }) => {
+    }){
+
+      // REDuX -> STATE DEFINE
+      const projectsState = useSelector((state)=> state.projects)
+      const projects = projectsState.data;
+
+      // DISPATCH
+      const dispatch = useDispatch();
+
+      // if projects are empty
+      if(projectsState.error){
+        return (
+          <>
+            <h1>project load failed</h1>
+            <p>projectsState.error</p>
+          </>
+        )
+      }
+
+      // if projects are loading
+      if(projectsState.loading){
+        return (
+          <>
+            <h1>Loading... Projects</h1>
+            
+          </>
+        )
+      }
 
     // Handel Update Click 
     const handleUpdateClick = (projectData) =>{
@@ -150,8 +181,14 @@ const ProjectList = ({
 
     // Handel Delete Click
     const deleteProject = async (id) =>{
-       await delProject(id); 
-       loadAllProjects()
+      try{
+        await delProject(id); 
+        dispatch(deleteProjectState({id:id}))
+      }catch (error){
+        alert("delete failed")
+        console.log("delete Failed,\n", error)
+      }
+      
     }
 
   return (

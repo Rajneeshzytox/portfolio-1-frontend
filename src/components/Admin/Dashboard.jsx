@@ -1,10 +1,9 @@
-import { useState } from "react"
+import { Outlet } from "react-router-dom"
+
 // css 
 import "../Admin/admin_assets/admin.css"
 
 // components
-import ProjectAdmin from "./ProjectAdmin"
-import Options_Admin from "./Options_Admin"
 import NavBar from "./miniCompoenets/NavBar"
 
 
@@ -12,7 +11,6 @@ import NavBar from "./miniCompoenets/NavBar"
 
 export default function Dashboard(){
     // active component <change in NavBar - NavItems>
-    const [active, setActive] = useState(0)
     return (
         <>
         {/* Dashboard */}
@@ -32,7 +30,7 @@ export default function Dashboard(){
                     gridArea: "sidebar",
                 }}
             >
-                <NavBar setActive={setActive}/>
+                <NavBar/>
             </div>
 
             {/* content */}
@@ -42,12 +40,8 @@ export default function Dashboard(){
                     gridArea: "content",
                 }}
             > 
-                {
-                    active==1?
-                    <Options_Admin/>
-                    :
-                    <ProjectAdmin/>
-                }
+                {/* child element */}
+                {<Outlet/>}
             </div>
         </div>
         </>

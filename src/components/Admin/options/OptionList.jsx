@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { useDispatch } from "react-redux";
+
 // Table Heading Component
 const TableHeadingText = ({ title }) => {
   const table_heading_data = [
@@ -109,8 +111,13 @@ export default function OptionList({
   data,
   updateOption,
   deleteOption,
-  loadOption,
+  updateState,
+  deleteState,
 }) {
+
+  // DISPATCH 
+  const dispatch = useDispatch();
+
   // Upadte
   // is update state
   const [isUpdate, setIsUpdate] = useState({});
@@ -118,19 +125,19 @@ export default function OptionList({
   // Update (Handel save button click)
   const handleUpdateClick = async (obj) => {
     // obj = {id:1, name:'something'}
-    // console.log(obj)
     if (obj == {}) {
       return;
     }
 
     try {
       const UpdateData = { name: String(obj.name).toLowerCase() };
-      
-      await updateOption(obj.id, JSON.stringify(UpdateData));
-      
-      loadOption();
-        //   reset update state
-        setIsUpdate({})
+      const res = await updateOption(obj.id, JSON.stringify(UpdateData));
+      // console.log(res, " Updated")
+      if (res){
+        dispatch(updateState(res))
+      }
+      //   reset update state
+      setIsUpdate({})
     } catch (error) {
       console.log(`failed to update ${title}\n`, error);
     }
@@ -139,10 +146,12 @@ export default function OptionList({
   // handle delete click
   const handleDeleteClick = async (id) => {
     try {
-      await deleteOption(Number(id));
-      console.log("deleted successfully");
-      // load all projects again
-      loadOption();
+      const res = await deleteOption(Number(id));
+      console.log(res, " DELETED");
+      if(res){
+        dispatch(deleteState({id:res}))
+      }
+
     } catch (error) {
       console.log(`failed to delete ${title}\n`, error);
     }

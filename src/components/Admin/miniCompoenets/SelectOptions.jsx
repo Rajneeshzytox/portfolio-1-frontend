@@ -86,7 +86,7 @@ export default function SelectOptionsComponent({
     setSelectedOptons,
     single,
     createOption,
-    loadOption,
+    // loadOption,
 }){
     if(!(options)){
         return(
@@ -95,7 +95,7 @@ export default function SelectOptionsComponent({
     }  
 
     // if true then display all options OptionContainer  
-    const [isActive, setIsActive] = useState();
+    // const [isActive, setIsActive] = useState();
 
     // search text (for filter)
     const [inputValue, setinputValue] = useState('');
@@ -131,9 +131,7 @@ export default function SelectOptionsComponent({
     }
     // remove options (remove in selected options state)
     const removeSelect = (option) => {
-        if(single){
-            setSelectedOptons([])
-        }else{
+        if(!single){
             setSelectedOptons((prev) => (prev.filter((obj) => obj.id != option.id)))
         }
     }
@@ -144,7 +142,7 @@ export default function SelectOptionsComponent({
         if(data){
             try{
                 await createOption(JSON.stringify({name:data}));
-                loadOption();
+                // loadOption();
             }catch(err){
                 console.log("Error while creating new options\n", err);
             }

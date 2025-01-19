@@ -4,14 +4,20 @@ import { createProject, updateProject } from "../Data/api";
 import RenderInput from "../miniCompoenets/RenderInputs";
 import RenderSelectInputs from "../miniCompoenets/RenderSelectInput";
 
-
+// REDUX DISPATCH
+import {useDispatch} from "react-redux"
+import { addProjecState, updateProjectState } from "../../../reduxStates/slices/projectsSlice";
 
 export default function Form({
     formLabelData,
-    loadAllOptions,
+    // loadAllOptions,
     isUpdate,
     updateProjects,
 }) {
+
+    // DISPATCH
+    const dispatch = useDispatch();
+
     const [selectedTagsState, setSelectedTagsState] = useState([])
     const [selectedCategoriesState, setSelectedCategoriesState] = useState([])
     const [selectedStatusState, setSelectedStatusState] = useState([])
@@ -63,30 +69,35 @@ export default function Form({
     // get form data and reset states 
     const getFormData = (inputLabels) => {
         const project_data_json = {};
+        const project_data_to_add_state = {};
 
         // normal inputs value add to (json / object)
         inputLabels.map((input) => {
             project_data_json[input.text] = document.getElementById(input.text).value;
+            project_data_to_add_state[input.text] = document.getElementById(input.text).value;
         })
 
         // selected tags add to json/object
         const tags = selectedTagsState.length ? selectedTagsState.map((obj) => (obj.id)) : [];
         project_data_json['tags'] = tags
+        project_data_to_add_state['tags'] = selectedTagsState.length ? selectedTagsState: [];
+
         
         // selected categories add to json/object
         const categories = selectedCategoriesState.length? selectedCategoriesState.map((obj) => (obj.id)) : [];
         project_data_json['categories'] = categories
-        
+        project_data_to_add_state['categories'] = selectedCategoriesState.length ? selectedCategoriesState: [];
 
         // selected status add to json/object
         const status = selectedStatusState.length? selectedStatusState[0].id : null;
         project_data_json['status'] = status
-        
+        project_data_to_add_state['status'] = selectedStatusState.length? selectedStatusState[0] : null;
+
         // cleadr all datta
         FormReset(formLabelData.inputLabels);
 
         // console.log(JSON.stringify(project_data_json))
-        return project_data_json
+        return ({project_data_json, project_data_to_add_state})
 
     }
 
@@ -96,18 +107,32 @@ export default function Form({
             alert("title can't be empty");
             return;
         }
-
-        const projectData = JSON.stringify(getFormData(inputLabels));
-        // console.log("ID: ", updateProjects.state.projectUpdateData.id)
+        const formData = getFormData(inputLabels);
+        const jsonProjectData = JSON.stringify(formData.project_data_json);
+        const projectToADDSTATE = formData.project_data_to_add_state;
+        // console.log(formData.project_data_json, formData.project_data_to_add_state)
+        
         try{
             if(isUpdate){
-                await updateProject(updateProjects.state.projectUpdateData.id, projectData)
-                console.log("projects update successfullly!")
+                await updateProject(updateProjects.state.projectUpdateData.id, jsonProjectData)
+                
+                // UPDATE STATE PROJECT
+                dispatch(updateProjectState({
+                    ...projectToADDSTATE,
+                    id: updateProjects.state.projectUpdateData.id,
+                }))
+                
             }else{
-                const res = await createProject(projectData) 
-                console.log("project created successfully!\n", res)
+               let res = await createProject(jsonProjectData) 
+                console.log("response while project create\n", res)
+                // ADD to STATE 
+                // add project to state if res is not null
+                if(res.id){dispatch(addProjecState({
+                    ...projectToADDSTATE,
+                    id:res.id,
+                }))}
             }
-            await loadAllOptions.projects();
+
         }catch(err){
             console.log(err)
         }
@@ -162,7 +187,7 @@ export default function Form({
                             set:setSelectedStatusState
                         },
                     }}
-                    loadAllOptions={loadAllOptions}
+                    // loadAllOptions={loadAllOptions}
                 />
                 </div>
                 
