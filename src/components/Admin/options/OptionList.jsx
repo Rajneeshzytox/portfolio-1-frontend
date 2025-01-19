@@ -90,7 +90,7 @@ const TableRow = ({ data, handleDeleteClick, handleUpdateClick, update }) => {
             {/* Delete */}
             <td>
               <button
-                className="custom-button bg-red-500 text-white"
+                className="custom-button bg-red-500 text-gray-200"
                 onClick={() => handleDeleteClick(option.id)}
               >
                 Delete

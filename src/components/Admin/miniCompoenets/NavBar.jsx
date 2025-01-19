@@ -12,8 +12,13 @@ const NavItems = ({items, isExpand}) => {
 
                 <NavLink 
                     to={`${obj.url}`}
+                    end={obj.end}
                     key={`option_${obj.id}`}
-                    className={`flex flex-nowrap  items-center gap-3 w-full ${!isExpand? "max-sm:hidden justify-center" : "px-6 justify-start"} transition-all  py-1 bg-gray-600 hover:bg-gray-300 hover:text-gray-900 rounded-md cursor-pointer`}
+                    className={({ isActive }) =>
+                        `flex flex-nowrap items-center gap-3 w-full transition-all py-1 rounded-md cursor-pointer
+                         ${!isExpand ? "max-sm:hidden justify-center" : "px-6 justify-start"} 
+                         ${isActive ? "bg-blue-700 text-gray-200" : "bg-gray-600 hover:bg-gray-300 hover:text-gray-900"}`
+                      }
                     
                 >
                     
@@ -43,9 +48,9 @@ export default function NavBar(){
     const [expand, setexpand] = useState(false)
 
     const [navItems, setNavItems] = useState([
-        {id:1, url: '', text:'Dashboard', icon: "D"},
-        {id:2, url: 'projects', text:'projects', icon: "🃏"},
-        {id:3, url: 'options', text:'options', icon: "✨"},
+        {id:1, url: '', text:'Dashboard', icon: "D", end:true},
+        {id:2, url: 'projects', text:'projects', icon: "🃏", end:false},
+        {id:3, url: 'options', text:'options', icon: "✨", end:false},
     ])
 
     // set Expand to true/false
@@ -54,7 +59,8 @@ export default function NavBar(){
     }
     return(
         <>
-        <div className={`transition-all flex sm: flex-col gap-6 overflow-hidden sm:py-6 py-4 px-4`}>
+        <div className={`transition-all flex sm: flex-col gap-6 overflow-hidden sm:py-6 py-4 px-4 
+            `}>
 
             {/* Nav Logo */}
             <div className="flex justify-start items-center gap-3">
@@ -63,8 +69,7 @@ export default function NavBar(){
                 
                 {/* Nav Logo text */}
                 {
-                    expand &&
-                    <h2 className="text-lg font-semibold">Admin</h2>
+                    <h2 className={`max-sm:block ${!expand?"hidden":""}  text-lg font-semibold`}>Admin</h2>
                 }
             </div>
 

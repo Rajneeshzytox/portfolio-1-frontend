@@ -15,7 +15,7 @@ function InputLabel({ text, type, req, value }) {
         required={req}
         value={labelValue}
         onChange={(e) => setlabelValue(e.target.value)}
-        className="bg-gray-700 py-1 px-2 rounded-md "
+        className="bg-gray-700 py-2 px-4 rounded-md "
       />
     </div>
   );

@@ -28,7 +28,10 @@ export default function Options_Admin(){
                         <NavLink  
                             key={option.title}
                             to={option.url}
-                            className={`${false}?'bg-gray-200 text-gray-700': 'bg-gray-700'}`}
+                            end
+                            className={({isActive})=>(
+                                (isActive)? 'bg-gray-200 text-gray-700': 'bg-gray-700'
+                            )}
                             onClick={()=>setOptionInputValue("")}
                         >
                             {option.title}

@@ -25,7 +25,8 @@ export default function Dashboard(){
 
             {/* sidebar */}
             <div 
-                className="bg-gray-800"
+                className="bg-gray-800 backdrop:blur-md relative
+                *:sm:sticky *:left-0 *:top-0"
                 style={{
                     gridArea: "sidebar",
                 }}
