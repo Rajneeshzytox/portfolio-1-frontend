@@ -113,12 +113,12 @@ const TableRow = ({ project, handleUpdateClick, deleteProject }) => {
 
         {/* delete */}
         <td>
-          <button className="custom-button bg-blue-700 text-white" onClick={() => deleteProject( project.id)}>Delete</button>
+          <button className="custom-button bg-red-600 text-gray-200 " onClick={() => deleteProject( project.id)}>Delete</button>
         </td>
 
         {/* Update */}
         <td>
-          <button className="custom-button bg-red-600 text-gray-200" onClick={() => handleUpdateClick(project)}>Update</button>
+          <button className="custom-button bg-blue-700 text-white" onClick={() => handleUpdateClick(project)}>Update</button>
         </td>
       </tr>
     </>

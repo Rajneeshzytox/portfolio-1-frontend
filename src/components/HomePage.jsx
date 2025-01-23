@@ -8,51 +8,43 @@ import "../statics/styles/Home.css";
 // frontend Data
 import { frontendData } from "./Admin/Data/frontendData.js";
 
+// bg elements
+import BgShape from "./bg-elements/bg-shape.jsx" 
 
 const Data = frontendData()
 
 
 export default function HomePage() {
 
-  const moveImgs = () => {
-      const moveImg = document.getElementById('moveImg');
-      window.addEventListener('mousemove', (e)=>{
-        moveImg.style.left = e.clientX + 'px';
-        moveImg.style.top = e.clientY + 'px';
-      })
-  }
-
   return (
     <>
       <main
-        className="MainHomePage p-2 relative  bg-gray-950 text-gray-300 grid max-w-full lg:max-h-screen min-h-screen gap-3 
-                 md:*:flex *:grid *:md:flex-row *:gap-3 *:md:justify-between
-                 z-0 overflow-hidden
-                 "
-        onMouseMove={(e)=>moveImgs()}
-      >
-
-        <img src="/img/bg-1.png" className="absolute -z-10 object-center top-0 left-0 w-full h-full"/>
-        <img id="moveImg" src="/img/bg-2.png"  className="absolute -z-10 object-center top-0 left-0 mix-blend-multiply -translate-x-1/2 -translate-y-1/2 scale-[2] w-full h-full"/>
-
-
+        className="MainHomePage p-2 relative bg-gray-950 text-gray-300 grid w-full lg:max-h-screen min-h-screen gap-3 overflow-x-hidden 
+        md:*:flex *:grid *:md:flex-row *:gap-3 *:md:justify-between *:z-10 lg:*:max-h-none md:*:max-h-52
+        z-0 max-w-[1536px] 2xl:my-10 2xl:mx-auto 2xl:rounded-2xl 2xl:shadow-lg 2xl:shadow-gray-800"
+        >
         
+        <BgShape/>
+        
+
         <section className="section1 max-md:grid-cols-2 *:md:h-auto *:min-h-20 *:gap-3 *:rounded-xl">
-          <Section1 RajneeshInfo={Data}/>
+          
+          <Section1/>
         </section>
 
-        <section className="section2 max-md:grid-cols-2 *:gap-3 *:rounded-xl *:md:h-auto *:min-h-20">
+        <section className="section2 max-md:grid-cols-2 *:gap-3 *:rounded-xl *:md:h-auto *:min-h-20 lg:max-h-52">
         
-          <Section2 Data={Data}/>
+          <Section2/>
         </section>
 
-        <section className="section3 max-md:grid-cols-2 max-md:grid-rows-3 *:gap-3 *:rounded-xl *:md:h-auto *:min-h-20">
-          <Section3 Data={Data}/>
-        </section>
-
-        <section className="section4 md:h-full lg:flex-col md:items-center md:justify-center md:*:h-full *:min-h-20 *:gap-3 *:rounded-2xl">
+        <section className="section4 md:h-full lg:flex-col-reverse md:items-center md:justify-center md:*:h-full *:min-h-20 *:gap-3 *:rounded-2xl">
           <Section4 />
         </section>
+        
+        <section className="section3 max-md:grid-cols-2 max-md:grid-rows-3 *:gap-3 *:rounded-xl *:md:h-auto *:min-h-20">
+          <Section3/>
+        </section>
+
       </main>
     </>
   );
