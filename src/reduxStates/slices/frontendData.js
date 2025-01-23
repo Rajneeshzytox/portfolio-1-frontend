@@ -8,11 +8,11 @@ const FrontendData = {
     email: "rajneesh@zytox.com",
     about: "shaping tomorrow with every line of code today",
     social: [
-        {id:1, text:"instagram", icon:"instagram.png", url: "#"},
-        {id:2, text:"github", icon:"github.png", url: "#"},
-        {id:3, text:"linkedin", icon:"linkedin.png", url: "#"},
-        {id:4, text:"twitterX", icon:"twitter.png", url: "#"},
-        {id:5, text:"whatsApp", icon:"whatsapp.png", url: "#"},
+        {id:1, text:"instagram", icon:"instagram.png", url: "https://instagram.com/rajneeshzytox"},
+        {id:2, text:"github", icon:"github.png", url: "https://github.com/rajneeshzytox"},
+        {id:3, text:"linkedin", icon:"linkedin.png", url: "https://linkedin.com/in/rajneeshzytox"},
+        {id:4, text:"twitterX", icon:"twitter.png", url: "https://x.com/rajneeshzytox"},
+        {id:5, text:"whatsApp", icon:"whatsapp.png", url: "https://wa.me/+918178545282"},
         {id:6, text:"facebook", icon:"facebook.png", url: "#"},
     ],
     journey: [
