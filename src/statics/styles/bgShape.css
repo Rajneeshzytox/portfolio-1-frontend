@@ -1,0 +1,20 @@
+.animated-path {
+    stroke-dasharray: 300; /* Total path length */
+    stroke-dashoffset: 1000; /* Initially hidden */
+    animation: draw-path 5s linear forwards; /* Draw path once */
+     /* Optimize rendering */
+  }
+  
+  @keyframes draw-path {
+    0% {
+      stroke-dashoffset: 3000; /* Start hidden */
+    }
+    50%{
+        stroke-dasharray: 2000;
+    }
+    100% {
+        stroke-dasharray: 3000;
+       
+      stroke-dashoffset: 0; /* Fully drawn */
+    }
+  }

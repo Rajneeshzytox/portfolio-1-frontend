@@ -19,6 +19,7 @@ Breakpoint	Min Width (px)
                         "section3 section4";
 }
 
+
 .section1{
     grid-area: section1;
 }
@@ -42,6 +43,9 @@ Breakpoint	Min Width (px)
                                 "section3"
                                 "section4";
      }
+
+
+    
 
 }
 
@@ -68,8 +72,8 @@ Breakpoint	Min Width (px)
         grid-area: row2-element-3;
     }
 
-
-
+    
+    
 }
 
 /* MAIN GRID LAYOUT - Home ENDS */
@@ -82,7 +86,17 @@ Breakpoint	Min Width (px)
    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 
+.bg-gardient-box {
+    background: linear-gradient(177deg, hsla(224, 71%, 8%, 0.7) 10.57%, hsla(224, 30%, 50%, 0.37) 107.32%);
+    backdrop-filter: blur(35.2px);
+
+}
 
 
+/* OTHER HOMEPAGE elements */
 
+.row2-element-2 {
+    --color: hsla(244, 33%, 28%, 1);
+    background: linear-gradient( var(--color), transparent, transparent , var(--color) );
+}
 
