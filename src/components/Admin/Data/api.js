@@ -3,8 +3,8 @@ import axios from "axios";
 
 // -------------- Base url (backend) ---------------
 const API = axios.create({
-    // baseURL: "https://portfoliobackend-qpni.onrender.com/api/"
-    baseURL: "http://127.0.0.1:8080/api/"
+    baseURL: "https://portfoliobackend-qpni.onrender.com/api/"
+    // baseURL: "http://127.0.0.1:8080/api/"
 })
 
 // -------------- Endpoints (url.py) ---------------
