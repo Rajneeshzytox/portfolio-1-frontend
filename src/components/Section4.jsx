@@ -64,8 +64,12 @@ export default function Section4() {
             
 
             {/* event Icon */}
-              <span className="rounded-full aspect-square lg:absolute inline-block w-14 lg:w-10 bg-gray-950 p-4 lg:p-2 z-10">
-              <img src={serverURL + event.icon} />
+              <span className="rounded-full aspect-square lg:absolute grid place-content-center w-14 lg:w-10 bg-gray-950 p-4 lg:p-2 z-10">
+              {
+                event.icon ?
+                <img src={serverURL + event.icon} />
+                : <p className="text-gray-400">✨</p>
+              }
               </span>
 
             {/*  event Data */}

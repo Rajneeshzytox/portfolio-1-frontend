@@ -1,5 +1,7 @@
 import "../../statics/styles/socialGrid.css"
 
+import { serverURL } from "../Admin/Data/api";
+
 export default function SocialGrid({socialData}) {
 
   return (
@@ -23,7 +25,7 @@ export default function SocialGrid({socialData}) {
                 >
                     <a href={social.url} >
                         {social.icon?(
-                            <img src={`/socialIcon/${social.icon}`} alt={social.title} className="aspect-square"/>
+                            <img src={serverURL + social.icon} alt={social.title} className="aspect-square"/>
                         ):(
                             <span className="aspect-square inline-block bg-gray-700 bg-opacity-75 rounded-md  px-4 py-2" title={social.title.toLowerCase()}>{social.title[0].toUpperCase()}</span>
                         )}
