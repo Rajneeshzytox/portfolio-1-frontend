@@ -2,8 +2,10 @@ import axios from "axios";
 
 
 
-export const serverURL = "http://127.0.0.1:8080";
-// export const serverURL = "https://portfoliobackend-qpni.onrender.com";
+export const serverURL = 
+  window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "http://127.0.0.1:8080"  // Development URL
+    : "https://portfoliobackend-qpni.onrender.com";  // Production URL
 
 // -------------- Base url (backend) ---------------
 const API = axios.create({
