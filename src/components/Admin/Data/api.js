@@ -1,10 +1,13 @@
 import axios from "axios";
 
 
+
+export const serverURL = "http://127.0.0.1:8080";
+// export const serverURL = "https://portfoliobackend-qpni.onrender.com";
+
 // -------------- Base url (backend) ---------------
 const API = axios.create({
-    baseURL: "https://portfoliobackend-qpni.onrender.com/api/"
-    // baseURL: "http://127.0.0.1:8080/api/"
+    baseURL: `${serverURL}/api/`
 })
 
 // -------------- Endpoints (url.py) ---------------
@@ -13,7 +16,7 @@ const urls = {
     tags: 'tags/',
     categories: 'category/',
     status: 'status/',
-
+    frontendData: 'resume-data/'
 }
 
 
@@ -212,4 +215,15 @@ export const updateStatus = async (id, statusData) => {
     } catch (err) {
         console.log(err)
     }
+}
+
+
+
+// ---------------- 
+// frontendData
+// ---------------- 
+
+export const loadFrontendData = async () => {
+    const res = await API.get(urls.frontendData);
+    return res.data
 }

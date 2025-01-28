@@ -1,16 +1,6 @@
 import "../../statics/styles/socialGrid.css"
 
-export default function SocialGrid() {
-
-    const socialData = [
-        {id:1, text:"instagram", icon:"instagram.png", url: "#"},
-        {id:2, text:"github", icon:"github.png", url: "#"},
-        {id:3, text:"linkedin", icon:"linkedin.png", url: "#"},
-        {id:4, text:"twitterX", icon:"twitter.png", url: "#"},
-        {id:5, text:"whatsApp", icon:"whatsapp.png", url: "#"},
-        {id:6, text:"facebook", icon:"facebook.png", url: "#"},
-    ]
-
+export default function SocialGrid({socialData}) {
 
   return (
   <>
@@ -24,18 +14,18 @@ export default function SocialGrid() {
 
                 social.url&&
                 <div 
-                    key={social.text}
+                    key={social.title}
                     className="w-6 aspect-square hover:brightness-125 transition duration-250
                    shadow_icon 
                     
                     "
-                    title={social.text}
+                    title={social.title}
                 >
                     <a href={social.url} >
                         {social.icon?(
-                            <img src={`/socialIcon/${social.icon}`} alt={social.text} className="aspect-square"/>
+                            <img src={`/socialIcon/${social.icon}`} alt={social.title} className="aspect-square"/>
                         ):(
-                            <p>{social.text}</p>
+                            <span className="aspect-square inline-block bg-gray-700 bg-opacity-75 rounded-md  px-4 py-2" title={social.title.toLowerCase()}>{social.title[0].toUpperCase()}</span>
                         )}
                     </a>
                 </div>
