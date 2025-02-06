@@ -25,7 +25,7 @@ export default function Section3() {
       {
         skills &&
         <div
-          className="row3-element-1 md:w-[30%] overflow-x-scroll flex justify-start items-center pl-4 max-md:col-span-2 bg-gardient-box"
+          className="row3-element-1 md:w-[30%] overflow-hidden flex justify-start items-center pl-4 max-md:col-span-2 bg-gardient-box"
           >
             {/* SKills Lenght Heading */}
             <h3 className="flex flex-col items-center justify-center px-4 text-gray-400">
@@ -36,7 +36,9 @@ export default function Section3() {
             </h3>
             
             {/* slider bg */}
+            <div className="overflow-y-scroll overflow-x-hidden max-h-full max-md:max-h-52 w-full">
             <Skills skills={skills}/>
+            </div>
         </div>
       }
         

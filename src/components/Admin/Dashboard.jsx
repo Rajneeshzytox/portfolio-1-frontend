@@ -5,6 +5,7 @@ import "../Admin/admin_assets/admin.css"
 
 // components
 import NavBar from "./miniCompoenets/NavBar"
+import Admin from "./dashboard/Admin"
 
 
 

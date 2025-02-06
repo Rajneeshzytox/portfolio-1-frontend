@@ -54,18 +54,18 @@ export default function HomePage() {
         }
         </section>
 
-        <section className="section4 min-h-full lg:flex-col-reverse md:items-center md:justify-start md:*:h-full *:min-h-20  *:rounded-2xl">
+        <section className="section4 min-h-full lg:flex-col md:items-center md:justify-start md:*:h-full *:min-h-20 max-lg:max-h-none *:rounded-2xl">
         {
             frontendData.data[0] &&
           <Section4/>
         }
         </section>
         
-        <section className="section3 max-md:grid-cols-2 max-md:grid-rows-3 *:gap-3 *:rounded-xl *:md:h-auto *:min-h-20
+        <section className="section3  *:gap-3 *:rounded-xl *:md:h-auto *:min-h-20
         lg:max-h-[300px]">
           {
             frontendData.data[0] &&
-          <Section3/>
+            <Section3/>
         }
         </section>
 

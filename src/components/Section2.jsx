@@ -41,7 +41,7 @@ export default function Section2() {
 
         {/* row 2 element 3 */}
         <div
-          className="row2-element-3 md:w-[30%] md:flex md:justify-evenly md:items-center bg-gardient-box text-gray-200
+          className="row2-element-3 md:w-[30%] bg-gardient-box text-gray-200 grid place-content-center
           "
         >
           <img className="max-h-52" src="/img/block4.png" ></img>

@@ -9,7 +9,7 @@ export const fetchFrontendData = createAsyncThunk('fetch Frontend Data', async()
 
 const initialState = {
     data: [],
-    isLoading: false,
+    isLoading: true,
     error: false,
 } 
 

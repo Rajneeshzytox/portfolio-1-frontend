@@ -1,63 +1,48 @@
+import { randomColor } from "../Admin/miniCompoenets/randomColor";
+
+
 const ProjectCard = ({project, active}) => {
+
+    const theme = randomColor()
    
+    const handleClickCard = () => {
+      active(pre=>({...pre, active:true, projectData:project}))
+    }
+
+    
+
   return (
     <>
         {/* // Project Card */}
         <div
-         
-          className={`project-card border border-gray-600 transition-all 
-                        md:overflow-x-clip md:overflow-y-hidden overflow-y-clip overflow-x-hidden
-                        flex flex-col md:flex-row 
-                        md:max-w-none max-w-52 w-52 
-                        md:max-h-52 max-h-none h-52  
-                        ${project.id == active.state ? "md:w-96 max-md:h-96 " : ""}`}
-            onClick={()=>active.set((prev)=>(prev==project.id? 0 : project.id))}
+          className=" max-w-72 rounded-lg relative bg-gray-900 overflow-clip flex flex-col items-center justify-center gap-4 pb-4"
+          style={{boxShadow: `0px 0px 50px -10px ${theme}`}}
+          onClick={handleClickCard}
         >
-          {/* project card sec 1 */}
-          <div className="min-w-52 min-h-52 flex justify-between pb-5 flex-col items-center">
-            {/* project Card Image */}
-            <div className="bg-gray-600 w-full h-1/2 aspect-square"></div>
 
-            {/* projects Card Title */}
-            <h3 className="capitalize">{project.title}</h3>
+          {/* CARD CONTENT */}
+          
+            {/* Image */}
+            {
+              true &&
+            <div className="aspect-square w-full bg-slate-800 z-10">
+            </div>
+            }
+                
 
-            {/* project card buttons/links */}
-            <div
-              className="project-card-links-container flex justify-evenly w-full
-                                *:w- *:flex *:gap-2 *:items-center *:bg-gray-600  *:rounded *:flex-nowrap
-                                "
-            >
-              {project.source && (
-                <a href={project.source}>
-                  <span>g</span>
-                  <span>code</span>
-                </a>
-              )}
-              {project.demo && (
-                <a href={project.demo}>
-                  <span>g</span>
-                  <span>demo</span>
-                </a>
-              )}
-              {project.site && (
-                <a href={project.site}>
-                  <span>g</span>
-                  <span>live</span>
-                </a>
-              )}
-            </div>
-          </div>
-          {/* project card sec 2 */}
-          <div className="min-w-52 min-h-52">
-            {/* project card description */}
-            <div className="h-1/2 overflow-y-scroll px-2 text-pretty">
-              {project.description}
-            </div>
-          </div>
+            {/* Card Title */}
+            <h3 
+              className="leading-tight font-semibold font-sans text-md capitalize px-4 text-ellipsis truncate line-clamp-2 text-pretty "
+              style={{color: theme}}>
+                {project.title} Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam qui suscipit corporis et aspernatur distinctio. Deleniti, ducimus sint quia veniam nam nemo in soluta delectus ea voluptatibus, enim deserunt ratione.
+              </h3>
+          
         </div>
+        
     </>
   );
 };
+
 
 
 export default ProjectCard;

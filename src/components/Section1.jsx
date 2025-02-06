@@ -32,7 +32,12 @@ export default function Section1({
                 title={`${first_name} ${last_name}`}
                 />
                 <div className="Rajneesh-Name w-[60%] text-gray-100 ">
-                    <h1 className="lg:text-3xl text-xl font-semibold">HI, I'm {`${first_name}`}</h1>
+                    <h1 className="lg:text-3xl text-xl font-semibold">
+                      HI, I'm 
+                      <NavLink className="px-2" to="/admin" title="WELCOME TO ADMIN">
+                       {`${first_name}`}
+                      </NavLink>
+                      </h1>
                     <p className="text-gray-300 trucate line-clamp-2 text-ellipsis">
                         {about}
                     </p>

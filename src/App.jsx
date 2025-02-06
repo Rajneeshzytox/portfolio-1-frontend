@@ -23,6 +23,9 @@ import HomePage from "./components/HomePage"
 // Projects
 import Projects from "./components/ProjectsPage/Projects";
 
+// admin welcome
+import Admin from "./components/Admin/dashboard/Admin";
+
 // DISPATCH 
 
 function App() {
@@ -54,7 +57,7 @@ function App() {
 
       {/* ADMIN */}
       <Route exact path="admin/" element={<Dashboard/>} >
-          <Route path="" element={<p>dashboard ui</p>} />
+          <Route path="" element={<Admin/>} />
           <Route path="projects/" element={<ProjectAdmin/>} />
           <Route path="options/" element={<Options_Admin/>} >
             <Route path="" element={<Tags/>} />
