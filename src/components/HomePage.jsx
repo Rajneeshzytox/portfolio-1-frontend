@@ -2,7 +2,8 @@ import Section1 from "./Section1.jsx";
 import Section2 from "./Section2.jsx";
 import Section3 from "./Section3.jsx";
 import Section4 from "./Section4.jsx";
-
+import { Loading } from "./frontend/Loading.jsx";
+import { Error } from "./frontend/Error.jsx";
 import "../statics/styles/Home.css";
 
 // bg elements
@@ -15,10 +16,10 @@ export default function HomePage() {
   const frontendData = useSelector((s)=>s.frontendData)
 
   if(frontendData.isLoading){
-    return <p>Loading</p>
+    return <Loading title="Please wait while server is starting"/>
   }
   if(frontendData.error){
-    return <p>Failed To load Data</p>
+    return <Error title="Failed to load data"/>
   }
 
 
@@ -62,7 +63,7 @@ export default function HomePage() {
         </section>
         
         <section className="section3  *:gap-3 *:rounded-xl *:md:h-auto *:min-h-20
-        lg:max-h-[300px]">
+        lg:max-h-[300px] max-md:flex max-md:flex-col justify-evenly ">
           {
             frontendData.data[0] &&
             <Section3/>

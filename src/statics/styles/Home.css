@@ -39,10 +39,11 @@ Breakpoint	Min Width (px)
     .MainHomePage{
         grid-template-columns: 1fr;
         grid-template-rows: repeat(4, minmax(200px, 1fr));
-        grid-template-areas: "section1"
-                                "section2"
-                                "section3"
-                                "section4";
+        grid-template-areas:
+        "section1"
+        "section2"
+        "section3"
+        "section4";
      }
 
 
@@ -59,7 +60,7 @@ Breakpoint	Min Width (px)
 
     .section2{
         grid-template-areas: "row2-element-2 row2-element-2"
-                            "row2-element-1 row2-element-3"
+        "row2-element-1 row2-element-3"
                             ;
         
     }

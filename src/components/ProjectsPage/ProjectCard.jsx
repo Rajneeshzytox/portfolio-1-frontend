@@ -15,8 +15,8 @@ const ProjectCard = ({project, active}) => {
     <>
         {/* // Project Card */}
         <div
-          className=" max-w-72 rounded-lg relative bg-gray-900 overflow-clip flex flex-col items-center justify-center gap-4 pb-4"
-          style={{boxShadow: `0px 0px 50px -10px ${theme}`}}
+          className=" max-w-72 min-w-52 rounded-lg relative bg-gray-900 overflow-clip flex flex-col items-center justify-center gap-4 pb-4"
+          style={{boxShadow: `0px 0px 50px 0px ${theme}`}}
           onClick={handleClickCard}
         >
 
@@ -34,7 +34,7 @@ const ProjectCard = ({project, active}) => {
             <h3 
               className="leading-tight font-semibold font-sans text-md capitalize px-4 text-ellipsis truncate line-clamp-2 text-pretty "
               style={{color: theme}}>
-                {project.title} Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam qui suscipit corporis et aspernatur distinctio. Deleniti, ducimus sint quia veniam nam nemo in soluta delectus ea voluptatibus, enim deserunt ratione.
+                {project.title}
               </h3>
           
         </div>

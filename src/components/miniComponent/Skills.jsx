@@ -5,7 +5,7 @@ export default function Skills({ skills }) {
   return (
     <>
       <div
-        className="p-2 skills-container grid-flow-row grid-cols-2 gap-y-6 justify-between"
+        className="p-2 skills-container grid-flow-row grid-cols-3 gap-y-6 justify-between mt-10"
         style={{ display: "grid"}}
       >
         {skills.map((skill) => (

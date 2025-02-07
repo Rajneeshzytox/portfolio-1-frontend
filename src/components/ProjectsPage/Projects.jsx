@@ -26,9 +26,12 @@ function Projects() {
     const [filterModelActive, setFilterModelActive] = useState(false)
     
 
-    //  to check if data (string) is in categories (array) of project 
-    const isIncludeCategory = (categories, data) =>{
+    //  to check if data:str {to be check if in} in categories:array[str] of project 
+    const isIncludeCategory = (categories, data, single=false) =>{
         let include = false
+        if(single){
+            return categories == data;
+        }
         categories.map((obj) => {
             if(obj.name == data ){
                 include =  true
@@ -110,6 +113,27 @@ function Projects() {
 
     }
 
+    const addCategory = (category) => {
+        
+        if(!category || activeFilterCategory == category){
+            setActiveFilterCategory('')
+            return
+        }
+        setActiveFilterCategory(category)
+    }
+
+    // CHECK IF ACTIVE 
+    const isCategoryActive = (category) => {
+        return isIncludeCategory(activeFilterCategory, category, true)
+    }
+    const isStatusActive = (status) => {
+        return isIncludeStatus(activeFilterStatus, status, true)
+    }
+    const isTagActive = (tag) => {
+        return isIncludeTags(tag, activeFilterTags, true)
+    }
+
+
 
   return(
   <>
@@ -126,18 +150,34 @@ function Projects() {
         <header className="project-head-nav">
             <ProjectNav
                 categories={categoriesFetchData}
-                setActiveFilterCategory={setActiveFilterCategory}
+                addCategory={addCategory}
                 setModelActive={setFilterModelActive}
+                isCategoryActive={isCategoryActive}
             />
         </header>
 
 
         {/* active-filter-container */}
-        <div className="active-filter-container py-4 px-6 flex gap-4 overflow-x-scroll">
+        <div className="active-filter-container py-4 px-6 flex gap-4 overflow-x-scroll
+        *:bg-gray-700 *:px-2 *:py-1 *:rounded-md ">
                 Active Filter: 
-                {activeFilterCategory}
-                {activeFilterStatus} 
-                {activeFilterTags.map((tag)=><span>{tag}</span>)}
+
+                {activeFilterCategory&&<span onClick={()=>setActiveFilterCategory('')}>
+                    {activeFilterCategory}
+                </span>}
+
+                {activeFilterStatus&&<span onClick={()=>setActiveFilterStatus('')}>
+                    {activeFilterStatus} 
+                </span>} 
+
+                
+                {activeFilterTags.map((tag, i)=>
+                    <span key={i+tag} onClick={()=>addTag(tag)}>
+                        {tag}
+                    </span>
+                )}
+                
+
 
         </div>
         
@@ -167,10 +207,8 @@ function Projects() {
                         setStatus={addStatus}
                         tagData={tagsFetchData}
                         statusData={statusFetchData}
-                        isIncludeStatus={isIncludeStatus}
-                        isIncludeTags={isIncludeTags}
-                        activeTag={activeFilterTags}
-                        activeStatus={activeFilterStatus}
+                        isStatusActive={isStatusActive}
+                        isTagActive={isTagActive}
                     />
             </ProjectModel>
         }

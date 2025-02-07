@@ -1,17 +1,3 @@
-/* 
-     SAMPLE CALL: 
-    <FilterSideBar
-        setTags={addTag}
-        setStatus={addStatus}
-        tagData={tagsFetchData}
-        statusData={statusFetchData}
-        isIncludeStatus={isIncludeStatus}
-        isIncludeTags={isIncludeTags}
-        activeTag={activeFilterTags}
-        activeStatus={activeFilterStatus}
-    />
- */
-
 
 
 const OptionFilter = ({
@@ -51,7 +37,7 @@ const OptionFilter = ({
 
 export default function FilterOption({
     setTags, setStatus, tagData, statusData,
-    isIncludeStatus, isIncludeTags, activeTag, activeStatus
+    isStatusActive, isTagActive
 }){
 
     // Add tag to activeFilterTag state
@@ -64,11 +50,10 @@ export default function FilterOption({
 
     // Check if included in active filter to highlight: 
     const isTagInclude = (tag) => {
-        console.log("run include for ", tag)
-        return isIncludeTags(tag, activeTag, true)
+        return isTagActive(tag)
     }
     const isStatusInclude = (status) => {
-        return isIncludeStatus(activeStatus, status, true)
+        return isStatusActive(status)
     }
 
     return (

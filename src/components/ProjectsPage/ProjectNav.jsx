@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom"
 
-const ProjectNav = ({categories, setActiveFilterCategory, setModelActive}) => {
+const ProjectNav = ({categories, addCategory, setModelActive, isCategoryActive}) => {
     return(
         <>  
             <nav className="sm:flex text-nowrap *:border *:border-gray-700 *:px-4 *:py-2">
@@ -20,7 +20,7 @@ const ProjectNav = ({categories, setActiveFilterCategory, setModelActive}) => {
 
                     {/* all categories  */}
 
-                    <button onClick={()=>setActiveFilterCategory('')} className="bg-gray-700 px-4 py-1  text-sm rounded">
+                    <button onClick={()=>addCategory('')} className="bg-gray-700 px-4 py-1  text-sm rounded">
                          ALL
                     </button>
 
@@ -30,8 +30,10 @@ const ProjectNav = ({categories, setActiveFilterCategory, setModelActive}) => {
                             categories.map((category)=>(
                                 <button
                                     key={category.id + category.name}
-                                    onClick={()=>setActiveFilterCategory(category.name)}
-                                    className="bg-gray-700 px-4  py-1 text-sm rounded"    
+
+                                    onClick={()=>addCategory(category.name)}
+
+                                    className={`bg-gray-700 px-4  py-1 text-sm rounded ${isCategoryActive(category.name)?"bg-blue-600":""}`}   
                                 >
                                     {category.name}
                                 </button>

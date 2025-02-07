@@ -25,7 +25,8 @@ export default function Section3() {
       {
         skills &&
         <div
-          className="row3-element-1 md:w-[30%] overflow-hidden flex justify-start items-center pl-4 max-md:col-span-2 bg-gardient-box"
+          className="row3-element-1  overflow-hidden flex justify-start md:w-[50%] items-center pl-4 max-md:col-span-2 bg-gardient-box
+          max-h-40"
           >
             {/* SKills Lenght Heading */}
             <h3 className="flex flex-col items-center justify-center px-4 text-gray-400">
@@ -44,25 +45,20 @@ export default function Section3() {
         
       {/* skills ends */}
   
-        {/* row3-element-2 */}
-        <div
-          className="row3-element-2 md:max-w-[20%] p-0 m-0 bg-gardient-box text-gray-200 rounded-xl overflow-hidden iniline"
-        >
-          <img src="/img/block3.png" className="w-full h-full"></img>
-        </div>
+        
   
         {/* row3-element-3 */}
         <div
-          className="row3-element-3 md:w-[50%] flex md:items-center md:justify-start overflow-clip md:flex-row flex-col max-md:row-span-2 bg-gray-300 bg-gardient-box"
+          className="row3-element-3 md:w-[50%] w-full  flex md:items-center md:justify-start overflow-clip md:flex-row flex-col max-md:row-span-2 bg-gray-300 bg-gardient-box"
           
         >
           {/* Resume Container */}
             {
               resume[0] &&
-              <div className="md:w-full h-[40%] md:h-full flex flex-col justify-center items-center px-5 py-2 gap-1 text-center bg-indigo-900 text-white">
+              <div className="md:w-full h-[40%] md:h-full flex flex-col justify-center items-center px-5 gap-1 text-center bg-indigo-900 text-white py-8">
                   <h5 className="text-lg">Too much clutter?</h5>
                   <p className="text-sm">Download Clean Resume</p>
-                  <a className="inline-block duration-200 text-center rounded px-2 text-gray-300 hover:text-gray-100 hover:underline" href={resume[0].url} title={resume[0].category.name + " Resume Download"} download 
+                  <a className="inline-block duration-200 text-center rounded px-2 text-gray-300 hover:text-gray-100 hover:underline " href={resume[0].url} title={resume[0].category.name + " Resume Download"} download 
                   
                   >
                     My Resume
@@ -71,11 +67,11 @@ export default function Section3() {
             }
 
           {/* have a project ? */}
-          <div className="md:w-full h-[60%] md:h-full flex flex-col justify-center items-center px-4 gap-2">
+          <div className="md:w-full h-[60%] md:h-full flex flex-col justify-center items-center px-4 gap-2 py-8">
               <h5>
                 have a project idea?
               </h5>
-              <a className="inline-block hover:text-white"
+              <a className="inline-block hover:text-white hover:underline"
                href="#">let's discuss</a>
           </div>
         </div>
